@@ -28,4 +28,12 @@ RSpec.describe "Roman numerals" do
   it "represents 100 as C" do
     expect( Number.to_roman(100) ).to eq "C"
   end
+  
+  it "represents 6 as VI" do
+      expect( Number.to_roman(6) ).to eq "VI"
+    end
+    
+    it "represents 11 as XI" do
+          expect( Number.to_roman(11) ).to eq "XI"
+        end
 end
