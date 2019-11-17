@@ -7,12 +7,15 @@ class Number
     100 => "C"
   }
 
+#     require "pry"
+#     binding.pry
   def self.to_roman(decimal_number)
-    last_closest_number = closest_number(decimal_number)
     roman_number=[]
+
+    last_closest_number = closest_number(decimal_number)
     reminder = nil
 
-    reminder = decimal_number-last_closest_number 
+    reminder = decimal_number - last_closest_number 
   
     if ROMAN_VALUES.key?(decimal_number)
         return ROMAN_VALUES[decimal_number]
@@ -26,18 +29,11 @@ class Number
         roman_number.push ROMAN_VALUES[last_closest_number]
         roman_number.push ROMAN_VALUES[reminder]
     end
+
     roman_number.join
   end
   
   def self.closest_number(decimal_number)
-    last_closest_number = 0
-
-    for key, given_number in ROMAN_VALUES
-      if key < decimal_number
-        last_closest_number = key
-      end
-     end
-      
-     last_closest_number
+    ROMAN_VALUES.keys.reverse.find{|value| value < decimal_number} || 0
   end
 end
